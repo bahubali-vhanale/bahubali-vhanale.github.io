@@ -641,6 +641,7 @@
             emailjs.send("service_0opb6h6", "template_u99kc5f", params)
                 .then(function(response) {
                     console.log("Email sent successfully", response);
+                    alert("Email sent successfully!!")
                 }, function(error) {
                     console.error("Email failed to send", error);
                 });
