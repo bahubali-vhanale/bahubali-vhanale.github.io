@@ -685,7 +685,13 @@
           alert('Please fill in all required fields.');
           event.preventDefault(); // Prevent the form from being submitted
         }
-
+        var params = {
+          to_name: "Bahubali",
+          from_name: document.getElementById("from_name").value,
+          email: document.getElementById("email").value,
+          message: document.getElementById("message").value,
+          Subject: document.getElementById("Subject").value
+        };
         emailjs.send("service_0opb6h6", "template_u99kc5f", params)
           .then(function (response) {
             document.getElementById("from_name").value = "",
