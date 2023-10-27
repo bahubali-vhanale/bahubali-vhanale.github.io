@@ -106,7 +106,8 @@
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>25 Sept 1997</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Business Website:</strong>
-                    <span>https://bahubali-vhanale.github.io/webally.github.io/</span></li>
+                    <span>https://bahubali-vhanale.github.io/webally.github.io/</span>
+                  </li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+91 976 322 850</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Ichalkaranji, Kolhapur</span>
                   </li>
@@ -116,7 +117,8 @@
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>26</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Personal Website:</strong>
-                    <span>https://bahubali-vhanale.github.io/404.github.io/</span></li>
+                    <span>https://bahubali-vhanale.github.io/404.github.io/</span>
+                  </li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master of Computer
                       Application</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>bahubalivhanale@gmail.com</span>
@@ -673,20 +675,18 @@
       emailjs.init("qiQl7OlGJpnASdzEG");
 
       document.getElementById("send-button").addEventListener("click", function () {
-        var params = {
-          to_name: "Bahubali",
-          from_name: document.getElementById("from_name").value,
-          email: document.getElementById("email").value,
-          message: document.getElementById("message").value,
-          Subject: document.getElementById("Subject").value
-        };
+        var firstName = document.getElementById('from_name').value;
+        var lastName = document.getElementById('message').value;
+        var email = document.getElementById('email').value;
+        var Subject = document.getElementById("Subject").value
+
+        if (!from_name || !message || !email || !Subject) {
+          alert('Please fill in all required fields.');
+          event.preventDefault(); // Prevent the form from being submitted
+        }
 
         emailjs.send("service_0opb6h6", "template_u99kc5f", params)
           .then(function (response) {
-
-            // thisForm.querySelector('.sent-message').classList.add('d-block');
-            //console.log("Email sent successfully", response);
-            // alert("Email sent successfully!!");
             document.getElementById("from_name").value = "",
               document.getElementById("email").value = "",
               document.getElementById("message").value = "",
@@ -701,6 +701,23 @@
           }, function (error) {
             console.error("Email failed to send", error);
           });
+      });
+
+      window.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.ctrlKey) {
+          e.preventDefault(); // Prevent the default action (e.g., Ctrl+T opens a new tab)
+          // Optionally, you can also display a message to inform the user
+          console.log('Ctrl key is disabled.');
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.altKey) {
+          e.preventDefault(); // Prevent the default action
+          console.log('Alt key is disabled.');
+        }
       });
     </script>
   </main><!-- End #main -->
